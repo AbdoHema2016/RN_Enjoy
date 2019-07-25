@@ -21,6 +21,19 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
+  - GoogleSignIn (4.4.0):
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - "GoogleToolboxForMac/NSString+URLArguments (~> 2.1)"
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleToolboxForMac/DebugUtils (2.2.1):
+    - GoogleToolboxForMac/Defines (= 2.2.1)
+  - GoogleToolboxForMac/Defines (2.2.1)
+  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.2.1)":
+    - GoogleToolboxForMac/DebugUtils (= 2.2.1)
+    - GoogleToolboxForMac/Defines (= 2.2.1)
+    - "GoogleToolboxForMac/NSString+URLArguments (= 2.2.1)"
+  - "GoogleToolboxForMac/NSString+URLArguments (2.2.1)"
+  - GTMSessionFetcher/Core (1.2.2)
   - React (0.60.4):
     - React-Core (= 0.60.4)
     - React-DevSupport (= 0.60.4)
@@ -67,19 +80,19 @@ PODS:
     - React-cxxreact (= 0.60.4)
     - React-jsi (= 0.60.4)
   - React-jsinspector (0.60.4)
-  - react-native-fbsdk (0.10.1):
+  - react-native-fbsdk (1.0.0-rc.5):
     - React
-    - react-native-fbsdk/Core (= 0.10.1)
-    - react-native-fbsdk/Login (= 0.10.1)
-    - react-native-fbsdk/Share (= 0.10.1)
-  - react-native-fbsdk/Core (0.10.1):
-    - FBSDKCoreKit (~> 5.0.0)
+    - react-native-fbsdk/Core (= 1.0.0-rc.5)
+    - react-native-fbsdk/Login (= 1.0.0-rc.5)
+    - react-native-fbsdk/Share (= 1.0.0-rc.5)
+  - react-native-fbsdk/Core (1.0.0-rc.5):
+    - FBSDKCoreKit (~> 5.0)
     - React
-  - react-native-fbsdk/Login (0.10.1):
-    - FBSDKLoginKit (~> 5.0.0)
+  - react-native-fbsdk/Login (1.0.0-rc.5):
+    - FBSDKLoginKit (~> 5.0)
     - React
-  - react-native-fbsdk/Share (0.10.1):
-    - FBSDKShareKit (~> 5.0.0)
+  - react-native-fbsdk/Share (1.0.0-rc.5):
+    - FBSDKShareKit (~> 5.0)
     - React
   - React-RCTActionSheet (0.60.4):
     - React-Core (= 0.60.4)
@@ -105,6 +118,9 @@ PODS:
   - React-RCTWebSocket (0.60.4):
     - React-Core (= 0.60.4)
     - React-fishhook (= 0.60.4)
+  - RNGoogleSignin (2.0.0):
+    - GoogleSignIn (~> 4.4.0)
+    - React
   - yoga (0.60.4.React)
 
 DEPENDENCIES:
@@ -114,6 +130,7 @@ DEPENDENCIES:
   - FBSDKShareKit
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - GoogleSignIn (~> 4.4.0)
   - React (from `../node_modules/react-native/`)
   - React-Core (from `../node_modules/react-native/React`)
   - React-cxxreact (from `../node_modules/react-native/ReactCommon/cxxreact`)
@@ -133,6 +150,7 @@ DEPENDENCIES:
   - React-RCTText (from `../node_modules/react-native/Libraries/Text`)
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-RCTWebSocket (from `../node_modules/react-native/Libraries/WebSocket`)
+  - RNGoogleSignin (from `../node_modules/react-native-google-signin`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -141,6 +159,9 @@ SPEC REPOS:
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
+    - GoogleSignIn
+    - GoogleToolboxForMac
+    - GTMSessionFetcher
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -187,6 +208,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   React-RCTWebSocket:
     :path: "../node_modules/react-native/Libraries/WebSocket"
+  RNGoogleSignin:
+    :path: "../node_modules/react-native-google-signin"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -198,6 +221,9 @@ SPEC CHECKSUMS:
   FBSDKShareKit: 8695bbb97c18a381bbf2851a3f24f95a59121b82
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
+  GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
+  GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
+  GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   React: ff7ee2ae5ee1c1d9ae2183b4111045b25294bb01
   React-Core: 8e0ea421cae5609d2562850f98421b15030476fa
   React-cxxreact: 326880209990151a7182a813311054e9772ba510
@@ -206,7 +232,7 @@ SPEC CHECKSUMS:
   React-jsi: 21d3153b1153fbf6510a92b6b11e33e725cb7432
   React-jsiexecutor: 7549641e48bafae7bfee3f3ea19bf4901639c5de
   React-jsinspector: 73f24a02fa684ed6a2b828ba116874a2191ded88
-  react-native-fbsdk: 38ee580e77319d03f8ed0bf4a020cbfd70dc4d2d
+  react-native-fbsdk: 1bd77128b223a25ff3dad3aca2423aab9d4fac92
   React-RCTActionSheet: 9f71d7ae3e8fb10e08d162cbf14c621349dbfab3
   React-RCTAnimation: 981d8c95b0e30918a9832ccac32af83562a27fae
   React-RCTBlob: 21e73d1020a302a75fed30dbaee9f15287b80baa
@@ -217,8 +243,9 @@ SPEC CHECKSUMS:
   React-RCTText: e0f224898b13af9aa036ea7cb3d438daa68c1044
   React-RCTVibration: 0bea40cd51bd089bd591a8f74c86e91fdf2666c5
   React-RCTWebSocket: 163873f4cdd5f1058a9483443404fc3801581cb6
+  RNGoogleSignin: d030c6c6591db24c3cee649f64c7babf0a1699a0
   yoga: c2c050f6ae6e222534760cc82f559b89214b67e2
 
-PODFILE CHECKSUM: 49580fdd466cadf2ed979fadf55b559f2a663ec0
+PODFILE CHECKSUM: ff96943bfc1c42a80171484c46305871914f0619
 
 COCOAPODS: 1.7.4

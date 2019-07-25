@@ -20,6 +20,8 @@
 		2DCD954D1E0B4F2C00145EB5 /* EnjoyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* EnjoyTests.m */; };
 		52EE3E8359EF52A19D3547A6 /* libPods-Enjoy-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 577C70042C694DB6E1BCE0F0 /* libPods-Enjoy-tvOSTests.a */; };
 		5F04392DE2AF394F7A7358AB /* libPods-Enjoy-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45957DC3E78D88A2D373AC50 /* libPods-Enjoy-tvOS.a */; };
+		94F8A13E22E9AFFC00EF5A29 /* libRNGoogleSignin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F8A13D22E9AFFC00EF5A29 /* libRNGoogleSignin.a */; };
+		94F8A14022E9B02B00EF5A29 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94F8A13F22E9B02A00EF5A29 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		577C70042C694DB6E1BCE0F0 /* libPods-Enjoy-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Enjoy-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6351FC6A605E42833155129D /* Pods-Enjoy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Enjoy.debug.xcconfig"; path = "Target Support Files/Pods-Enjoy/Pods-Enjoy.debug.xcconfig"; sourceTree = "<group>"; };
 		7C50B246FADF9CAE88C0F538 /* libPods-Enjoy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Enjoy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		94F8A13D22E9AFFC00EF5A29 /* libRNGoogleSignin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNGoogleSignin.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		94F8A13F22E9B02A00EF5A29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C54C7320DCA34F853E32D3FB /* Pods-Enjoy-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Enjoy-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Enjoy-tvOSTests/Pods-Enjoy-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		E8623A2798FB6E6D4ABFA050 /* Pods-Enjoy-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Enjoy-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Enjoy-tvOS/Pods-Enjoy-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		EAF1881BC6D67A39AF3B843F /* Pods-EnjoyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnjoyTests.release.xcconfig"; path = "Target Support Files/Pods-EnjoyTests/Pods-EnjoyTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -82,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94F8A13E22E9AFFC00EF5A29 /* libRNGoogleSignin.a in Frameworks */,
 				0533BB59D357CEFE1420E06D /* libPods-Enjoy.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,6 +132,7 @@
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				94F8A13F22E9B02A00EF5A29 /* GoogleService-Info.plist */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -139,6 +145,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				94F8A13D22E9AFFC00EF5A29 /* libRNGoogleSignin.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				7C50B246FADF9CAE88C0F538 /* libPods-Enjoy.a */,
@@ -342,6 +349,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				94F8A14022E9B02B00EF5A29 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,10 +473,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Enjoy/Pods-Enjoy-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

@@ -5125,6 +5125,11 @@ react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   version "1.0.0-rc.5"
   resolved "git+https://github.com/facebook/react-native-fbsdk.git#b1a624bb8453c1fdf6b610a7f91f0178796e71a3"
 
+react-native-google-signin@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-google-signin/-/react-native-google-signin-2.0.0.tgz#0d9cb128a65c0b48216716b979c1ada35900ceb0"
+  integrity sha512-9loM4lcCIdbco5BnmNio7yGaXQKCpCaY1VRmYiTSvC5NjuSf6Ui6jZRee46p/YdaU4yRnS3u5Vct6Psrvr0HNg==
+
 react-native@0.60.4:
   version "0.60.4"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.60.4.tgz#4378171e63dd5310497e15e54ec9185cb470752d"

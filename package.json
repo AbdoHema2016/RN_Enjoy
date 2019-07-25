@@ -10,7 +10,8 @@
   "dependencies": {
     "react": "16.8.6",
     "react-native": "0.60.4",
-    "react-native-fbsdk": "git+https://github.com/facebook/react-native-fbsdk.git"
+    "react-native-fbsdk": "git+https://github.com/facebook/react-native-fbsdk.git",
+    "react-native-google-signin": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
