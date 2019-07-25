@@ -13,7 +13,8 @@ import {
   ScrollView,
   View,
   Text,
-  StatusBar,
+  TouchableOpacity,
+  StatusBar,Alert,
 } from 'react-native';
 import { LoginButton, AccessToken } from 'react-native-fbsdk';
 import { GoogleSignin, GoogleSigninButton,statusCodes } from 'react-native-google-signin';
@@ -26,7 +27,17 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import Geolocation from '@react-native-community/geolocation';
+
+Geolocation.getCurrentPosition(info => console.log(info));
 class App extends Component{
+  state = {
+    location: null
+  };
+  findCoordinates = () => {
+    Geolocation.getCurrentPosition(info => Alert.alert(info));
+  };
+
   componentDidMount(){
     GoogleSignin.configure({
       iosClientId:'942617148522-u33cj6r0otk16tv5k50n8krm05osaldf.apps.googleusercontent.com'
@@ -49,6 +60,7 @@ class App extends Component{
           <Fragment>
             <StatusBar barStyle="dark-content" />
             <SafeAreaView>
+            
             <LoginButton
                 onLoginFinished={
                   (error, result) => {
@@ -72,6 +84,10 @@ class App extends Component{
     color={GoogleSigninButton.Color.Dark}
     onPress={this.signIn}
      />
+     <TouchableOpacity onPress={this.findCoordinates}>
+          <Text>Find My Coords?</Text>
+          <Text>Location: {this.state.location}</Text>
+        </TouchableOpacity>
             </SafeAreaView>
           </Fragment>
         );
