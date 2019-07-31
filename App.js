@@ -1,24 +1,17 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
 
 import React, {Fragment,Component} from 'react';
 import {
-  SafeAreaView,
+  
   StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  TouchableOpacity,
-  StatusBar,Alert,
+  
 } from 'react-native';
-import { LoginButton, AccessToken } from 'react-native-fbsdk';
-import { GoogleSignin, GoogleSigninButton,statusCodes } from 'react-native-google-signin';
+import * as firebase from 'firebase';
 
+import {createBottomTabNavigator,createStackNavigator,createAppContainer} from 'react-navigation';
+import WelcomeScreen from './screens/WelcomeScreen'
+import LoginScreen from './screens/LoginScreen'
+import {Provider} from 'react-redux'
+import store from './store'
 import {
   Header,
   LearnMoreLinks,
@@ -27,110 +20,49 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+
 import Geolocation from '@react-native-community/geolocation';
 
 Geolocation.getCurrentPosition(info => console.log(info));
+
+const TabNavigator = createBottomTabNavigator({
+  welcome: WelcomeScreen,
+  login: LoginScreen,
+  
+},{
+  defaultNavigationOptions: {
+    tabBarVisible: false,
+  },
+    
+    lazy:true
+});
+const AppContainer = createAppContainer(TabNavigator);
 class App extends Component{
-  state = {
-    location: null
-  };
-  findCoordinates = () => {
-    Geolocation.getCurrentPosition(info => Alert.alert(info));
-  };
+ 
 
   componentDidMount(){
-    GoogleSignin.configure({
-      iosClientId:'942617148522-u33cj6r0otk16tv5k50n8krm05osaldf.apps.googleusercontent.com'
-    })
-  }
-  signIn =()=>{
-    GoogleSignin.signIn().then((data)=>{
-      const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken,data.accessToken)
-      return firebase.auth().signInWithCredential(credential)
-    })
-    .then((currentuser)=>{
-      console.log("got in")
-    })
-    .catch((error)=>{
-      console.log("error")
-    })
+    firebase.initializeApp({
+      apiKey: "AIzaSyCLH8ohcht6C9UuSegOPGP-Gaiy-EHgEb8",
+    authDomain: "enjoy-510df.firebaseapp.com",
+    databaseURL: "https://enjoy-510df.firebaseio.com",
+    projectId: "enjoy-510df",
+    storageBucket: "",
+    messagingSenderId: "942617148522",
+    appId: "1:942617148522:web:8e3e337335d504bd"
+    });
   }
   render(){
         return (
-          <Fragment>
-            <StatusBar barStyle="dark-content" />
-            <SafeAreaView>
-            
-            <LoginButton
-                onLoginFinished={
-                  (error, result) => {
-                    if (error) {
-                      console.log("login has error: " + result.error);
-                    } else if (result.isCancelled) {
-                      console.log("login is cancelled.");
-                    } else {
-                      AccessToken.getCurrentAccessToken().then(
-                        (data) => {
-                          console.log(data.accessToken.toString())
-                        }
-                      )
-                    }
-                  }
-                }
-                onLogoutFinished={() => console.log("logout.")}/>
-               <GoogleSigninButton
-    style={{ width: 192, height: 48 }}
-    size={GoogleSigninButton.Size.Wide}
-    color={GoogleSigninButton.Color.Dark}
-    onPress={this.signIn}
-     />
-     <TouchableOpacity onPress={this.findCoordinates}>
-          <Text>Find My Coords?</Text>
-          <Text>Location: {this.state.location}</Text>
-        </TouchableOpacity>
-            </SafeAreaView>
-          </Fragment>
+          <Provider store={store}>
+              <AppContainer />
+          </Provider>
+           
         );
         }
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
+  
 });
 
 export default App;
